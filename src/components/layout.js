@@ -1,16 +1,15 @@
-/**
- * Layout component that queries for data
- * with Gatsby's useStaticQuery component
- *
- * See: https://www.gatsbyjs.com/docs/use-static-query/
- */
-
 import React from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
+import styled, { createGlobalStyle } from 'styled-components';
 
-import Header from "./header"
-import "./layout.css"
+const GlobalStyle = createGlobalStyle`
+  html, body, #___gatsby, #gatsby-focus-wrapper {
+    padding: 0;
+    margin: 0;
+    height: 100%;
+  }
+`
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
@@ -24,27 +23,13 @@ const Layout = ({ children }) => {
   `)
 
   return (
-    <>
-      <Header siteTitle={data.site.siteMetadata?.title || `Title`} />
-      <div
-        style={{
-          margin: `0 auto`,
-          maxWidth: 960,
-          padding: `0 1.0875rem 1.45rem`,
-        }}
-      >
-        <main>{children}</main>
-        <footer
-          style={{
-            marginTop: `2rem`,
-          }}
-        >
-          © {new Date().getFullYear()}, Built with
-          {` `}
-          <a href="https://www.gatsbyjs.com">Gatsby</a>
-        </footer>
-      </div>
-    </>
+    <Layout.Root>
+      <GlobalStyle />
+      <Layout.Main>{children}</Layout.Main>
+      <Layout.Footer>
+        <p>Made by <a href="https://bomani.rip/">Bomani Oseni McClendon</a></p>
+      </Layout.Footer>
+    </Layout.Root>
   )
 }
 
@@ -52,4 +37,33 @@ Layout.propTypes = {
   children: PropTypes.node.isRequired,
 }
 
-export default Layout
+Layout.Root = styled.div`
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+`;
+
+Layout.Main = styled.main`
+  flex: 1;
+`;
+
+Layout.Footer = styled.footer`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #444444;
+  opacity: 0.5;
+  font-style: italic;
+  
+  a {
+    text-decoration: none;
+    color: #444444;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+`;
+
+
+export default Layout;
