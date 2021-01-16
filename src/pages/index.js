@@ -1,5 +1,6 @@
 import React from "react";
 import styled from 'styled-components';
+import { Link } from 'gatsby';
 
 import Layout from "../components/layout";
 import SEO from "../components/seo";
@@ -14,7 +15,7 @@ const IndexPage = () => (
         as the physical act of repeating a word aloud can alter its meaning” – 
         Making Sense: Decoding Gertrude Stein
       </IndexPage.Quote>
-      <IndexPage.ContributeButton type="button">Contribute</IndexPage.ContributeButton>
+      <IndexPage.ContributeLink to="/contribute">Contribute</IndexPage.ContributeLink>
     </IndexPage.Content>
   </Layout>
 );
@@ -42,16 +43,18 @@ IndexPage.Quote = styled.h5`
   font-weight: 300;
 `;
 
-IndexPage.ContributeButton = styled.button`
+IndexPage.ContributeLink = styled(Link)`
   border: 1px solid #444444;
   border-radius: 0.5rem;
   margin-top: 5rem;
   padding: 0 5rem;
   height: 4rem;
-  background: none;
   font-size: 1.5rem;
   color: #444444;
   font-family: 'Cormorant Garamond';
+  display: flex;
+  align-items: center;
+  text-decoration: none;
 `;
 
 export default IndexPage;
