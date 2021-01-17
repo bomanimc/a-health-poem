@@ -43,7 +43,7 @@ AffirmationPage.Title = styled.h3`
 AffirmationPage.Divider = styled.hr`
   width: 15rem;
   margin: 1.5rem 0 3rem 0;
-  border: 1px solid #444444;
+  border: 0.5px solid #444444;
   opacity: 0.5;
 `;
 

@@ -63,7 +63,7 @@ ContributePage.LineText = styled.p`
 ContributePage.Divider = styled.hr`
   width: 15rem;
   margin: 4rem 0;
-  border: 1px solid #444444;
+  border: 0.5px solid #444444;
   opacity: 0.5;
 `;
 
