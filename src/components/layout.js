@@ -3,6 +3,7 @@ import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
 import styled, { createGlobalStyle } from 'styled-components';
 import '@fontsource/cormorant-garamond';
+import whatInput from 'what-input';
 
 const GlobalStyle = createGlobalStyle`
   html, body, div, span, applet, object, iframe,
@@ -60,6 +61,10 @@ const GlobalStyle = createGlobalStyle`
     height: 100%;
     color: #444444;
     font-family: 'Cormorant Garamond', serif;
+  }
+
+  [data-whatintent='mouse'] *:focus {
+    outline: none;
   }
 `;
 
