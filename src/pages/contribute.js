@@ -23,7 +23,7 @@ const ContributePage = () => {
               input type="text"
               placeholder="Enter your contribution here" 
             />
-            <ContributePage.Submit>
+            <ContributePage.Submit href="/affirmation">
               <RightArrow />
             </ContributePage.Submit>
           </ContributePage.InputContainer>
@@ -61,9 +61,10 @@ ContributePage.LineText = styled.p`
 `;
 
 ContributePage.Divider = styled.hr`
-  opacity: 0.5;
   width: 15rem;
   margin: 4rem 0;
+  border: 1px solid #444444;
+  opacity: 0.5;
 `;
 
 ContributePage.Form = styled.div`
@@ -89,7 +90,7 @@ ContributePage.Input = styled.input`
   border: 0;
 `;
 
-ContributePage.Submit = styled.button`
+ContributePage.Submit = styled.a`
   position: absolute;
   top: 50%;
   right: 0;
@@ -97,10 +98,6 @@ ContributePage.Submit = styled.button`
   background: 0;
   border: none;
   padding: 0;
-
-  input[type="button"] {
-    display: none;
-  }
 
   svg {
     width: 2rem;

@@ -106,7 +106,7 @@ Layout.Footer = styled.footer`
   align-items: center;
   opacity: 0.5;
   font-style: italic;
-  margin: 2rem;
+  padding: 2rem;
   
   a {
     text-decoration: none;
