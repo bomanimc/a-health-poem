@@ -12,9 +12,9 @@ const ContributePage = () => {
     <Layout>
       <SEO title="Contribute" />
       <ContributePage.Content>
-        <ContributePage.LineNumber>line {lineNumber}</ContributePage.LineNumber>
+        <ContributePage.Instruction>Describe health in your own words.</ContributePage.Instruction>
         <ContributePage.LineText>
-          ideas recur, although the ideas may be the same, we see them in different relationships
+          Health is...
         </ContributePage.LineText>
         <ContributePage.Divider />
         <ContributePage.Form>
@@ -27,9 +27,9 @@ const ContributePage = () => {
               <RightArrow />
             </ContributePage.Submit>
           </ContributePage.InputContainer>
-          <ContributePage.InstructionalDetail>
-            Restate line {lineNumber} in your own words.
-          </ContributePage.InstructionalDetail>
+          <ContributePage.LineNumberDetail>
+            You are contributing line {lineNumber} of the poem.
+          </ContributePage.LineNumberDetail>
         </ContributePage.Form>
       </ContributePage.Content>
     </Layout>
@@ -44,13 +44,13 @@ ContributePage.Content = styled.div`
   flex: 1;
   max-width: 75rem;
   margin: 0 auto;
+  padding: 0 2rem;
 `;
 
-ContributePage.LineNumber = styled.p`
-  font-size: 3rem;
-  font-style: italic;
-  font-weight: 300;
-  margin-bottom: 1rem;
+ContributePage.LineNumberDetail = styled.p`
+  font-size: 1.5rem;
+  margin-top: 1rem;
+  margin-left: 0.5rem;
 `;
 
 ContributePage.LineText = styled.p`
@@ -105,10 +105,11 @@ ContributePage.Submit = styled.a`
   }
 `;
 
-ContributePage.InstructionalDetail = styled.p`
-  font-size: 1.5rem;
-  margin-top: 1rem;
-  margin-left: 0.5rem;
+ContributePage.Instruction = styled.p`
+  font-size: 2rem;
+  font-style: italic;
+  font-weight: 300;
+  margin-bottom: 1rem;
 `;
 
 export default ContributePage;
