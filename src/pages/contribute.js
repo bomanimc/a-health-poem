@@ -6,10 +6,12 @@ import Layout from "../components/layout";
 import SEO from "../components/seo";
 import NewEntry from "../components/new-entry";
 import DetailsEntry from "../components/details-entry";
+import ReviewEntry from "../components/review-entry";
 
 const STEPS = {
   newEntry: 1,
   details: 2,
+  review: 3,
 };
 
 const ContributePage = () => {
@@ -22,9 +24,15 @@ const ContributePage = () => {
     setStep(STEPS.details);
   }
 
-  const onGoToNewEntryStep = (detailsEntry) => {
-    setDetails(detailsEntry);
+  const onGoToNewEntryStep = (detailsEntry = null) => {
+    if (detailsEntry) setDetails(detailsEntry);
     setStep(STEPS.newEntry);
+  }
+
+  const onGoToReviewEntryStep = (detailsEntry = null) => {
+    console.log('Details entry', details);
+    if (detailsEntry) setDetails(detailsEntry);
+    setStep(STEPS.review);
   }
 
   const onSubmitForm = async (detailsEntry) => {
@@ -50,6 +58,16 @@ const ContributePage = () => {
       {
         step === STEPS.details && (
           <DetailsEntry
+            details={details}
+            onCompleteStep={onGoToReviewEntryStep}
+            onBack={onGoToNewEntryStep}
+          />
+        )
+      }
+      {
+        step === STEPS.review && (
+          <ReviewEntry
+            contribution={contribution}
             details={details}
             onCompleteStep={onSubmitForm}
             onBack={onGoToNewEntryStep}

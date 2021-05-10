@@ -2,8 +2,8 @@ import React from "react";
 import styled from 'styled-components';
 // import RightArrow from "../assets/right-arrow.svg";
 
-const Back = ({ text, onClickBack }) => (
-  <Back.Link onClick={onClickBack}>{text}</Back.Link>
+const Back = ({ text, onClick }) => (
+  <Back.Link onClick={onClick}>{text}</Back.Link>
 );
 
 Back.Link = styled.a`

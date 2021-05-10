@@ -2,6 +2,7 @@ import React from "react";
 import styled from 'styled-components';
 import { useFormik } from 'formik';
 import Input from "./input";
+import Back from "./back";
 import RightArrow from "../assets/right-arrow.svg";
 
 const Details = ({ details, onCompleteStep, onBack }) => {
@@ -20,7 +21,7 @@ const Details = ({ details, onCompleteStep, onBack }) => {
 
   return (
     <Details.Content>
-      <Details.Back onClick={onClickBack}>Edit Your Contribution</Details.Back>
+      <Back onClick={onClickBack} text="Edit Your Contribution" />
       <Details.Instruction>
         Optionally, add some additional information that will
         allow your specific contribution to be credited.

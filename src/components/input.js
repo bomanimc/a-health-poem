@@ -9,13 +9,6 @@ const Input = (props) => {
     <Input.Container>
       <Input.InputContainer>
         <Input.Input {...otherProps} />
-        {/* {onSubmit && 
-          (
-            <Input.Submit onClick={onSubmit}>
-              <RightArrow />
-            </Input.Submit>
-          )
-        } */}
       </Input.InputContainer>
       <Input.LineNumberDetail>{detail}</Input.LineNumberDetail>
     </Input.Container>
