@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import styled from 'styled-components';
+import Input from "./input";
 import RightArrow from "../assets/right-arrow.svg";
 
-const NewEntry = ({ onCompleteStep }) => {
-  const [text, setText] = useState('');
+const NewEntry = ({ contribution, onCompleteStep }) => {
+  const [text, setText] = useState(contribution);
   const lineNumber = 3;
 
   const onUpdateText = (e) => {
@@ -23,19 +24,18 @@ const NewEntry = ({ onCompleteStep }) => {
       <NewEntry.Divider />
       <NewEntry.Form>
         <NewEntry.InputContainer>
-          <NewEntry.Input
-            type="text"
+          <Input
+            id="name" 
+            placeholder="Name" 
+            detail={`You are contributing line ${lineNumber} of the poem.`}
             placeholder="Enter your contribution here"
             value={text}
             onChange={onUpdateText}
           />
-          <NewEntry.Submit onClick={onSubmit}>
-            <RightArrow />
-          </NewEntry.Submit>
         </NewEntry.InputContainer>
-        <NewEntry.LineNumberDetail>
-          You are contributing line {lineNumber} of the poem.
-        </NewEntry.LineNumberDetail>
+        <NewEntry.Submit onClick={onSubmit}>
+          <RightArrow />
+        </NewEntry.Submit>
       </NewEntry.Form>
     </NewEntry.Content>
   );
@@ -81,8 +81,6 @@ NewEntry.Form = styled.div`
 NewEntry.InputContainer = styled.div`
   flex: 1;
   position: relative;
-  border-bottom: 1px solid rgba(68, 68, 68, 0.5);
-  padding-right: 4rem;
 `;
 
 NewEntry.Input = styled.input`
@@ -95,14 +93,32 @@ NewEntry.Input = styled.input`
   border: 0;
 `;
 
+NewEntry.Instruction = styled.p`
+  font-size: 2rem;
+  font-style: italic;
+  font-weight: 300;
+  margin-bottom: 1rem;
+`;
+
 NewEntry.Submit = styled.button`
-  position: absolute;
-  top: 50%;
-  right: 0;
-  transform: translateY(-50%);
-  background: 0;
-  border: none;
-  padding: 0;
+  border: 1px solid #444444;
+  border-radius: 0.5rem;
+  padding: 0 5rem;
+  height: 3rem;
+  font-size: 1.5rem;
+  color: #444444;
+  font-family: 'Cormorant Garamond';
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  align-self: end;
+  margin-top: 1rem;
+  background: none;
+  transition: background 0.5s;
+
+  &:hover {
+    background: #A0A0A0;
+  }
 
   svg {
     width: 2rem;
@@ -110,11 +126,5 @@ NewEntry.Submit = styled.button`
   }
 `;
 
-NewEntry.Instruction = styled.p`
-  font-size: 2rem;
-  font-style: italic;
-  font-weight: 300;
-  margin-bottom: 1rem;
-`;
 
 export default NewEntry;

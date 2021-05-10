@@ -12,12 +12,9 @@ const db = admin.firestore();
 
 exports.handler = async function(event) {
   const data = JSON.parse(event.body);
-  const { contribution } = data;
   const contributionRef = db.collection('contributions').doc(v4());
 
-  await contributionRef.set({
-    contribution,
-  });
+  await contributionRef.set(data);
 
   return {
     statusCode: 200,

@@ -2,11 +2,10 @@ import React, { useState } from "react";
 import styled from 'styled-components';
 import axios from 'axios';
 
-import RightArrow from "../assets/right-arrow.svg";
-
 import Layout from "../components/layout";
 import SEO from "../components/seo";
 import NewEntry from "../components/new-entry";
+import DetailsEntry from "../components/details-entry";
 
 const STEPS = {
   newEntry: 1,
@@ -15,15 +14,25 @@ const STEPS = {
 
 const ContributePage = () => {
   const [step, setStep] = useState(STEPS.newEntry);
+  const [contribution, setContribution] = useState('');
+  const [details, setDetails] = useState({});
 
-  const onGoToDetailsStep = (contribution) => {
-    onSubmitForm(contribution);
+  const onGoToDetailsStep = (contributionEntry) => {
+    setContribution(contributionEntry);
     setStep(STEPS.details);
   }
 
-  const onSubmitForm = async (contribution) => {
+  const onGoToNewEntryStep = (detailsEntry) => {
+    setDetails(detailsEntry);
+    setStep(STEPS.newEntry);
+  }
+
+  const onSubmitForm = async (detailsEntry) => {
+    console.log('Submitting form with...', details);
+    setDetails(detailsEntry);
     axios.post('/.netlify/functions/contribute', {
       contribution,
+      ...detailsEntry
     }).then(response => console.log(response.data));
   }
 
@@ -33,7 +42,17 @@ const ContributePage = () => {
       {
         step === STEPS.newEntry && (
           <NewEntry 
+            contribution={contribution}
             onCompleteStep={onGoToDetailsStep}
+          />
+        )
+      }
+      {
+        step === STEPS.details && (
+          <DetailsEntry
+            details={details}
+            onCompleteStep={onSubmitForm}
+            onBack={onGoToNewEntryStep}
           />
         )
       }
