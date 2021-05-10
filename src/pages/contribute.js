@@ -1,37 +1,45 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from 'styled-components';
+import axios from 'axios';
+
 import RightArrow from "../assets/right-arrow.svg";
 
 import Layout from "../components/layout";
 import SEO from "../components/seo";
+import NewEntry from "../components/new-entry";
+
+const STEPS = {
+  newEntry: 1,
+  details: 2,
+};
 
 const ContributePage = () => {
+  const [step, setStep] = useState(STEPS.newEntry);
+  const [contribution, setContribution] = useState('');
   const lineNumber = 3;
+
+  const onGoToDetailsStep = (contribution) => {
+    setContribution(contribution);
+    onSubmitForm();
+    setStep(STEPS.details);
+  }
+
+  const onSubmitForm = async () => {
+    axios.post('/.netlify/functions/contribute', {
+      contribution,
+    }).then(response => console.log(response.data));
+  }
 
   return (
     <Layout>
       <SEO title="Contribute" />
-      <ContributePage.Content>
-        <ContributePage.Instruction>Describe health in your own words.</ContributePage.Instruction>
-        <ContributePage.LineText>
-          Health is...
-        </ContributePage.LineText>
-        <ContributePage.Divider />
-        <ContributePage.Form>
-          <ContributePage.InputContainer>
-            <ContributePage.Input
-              input type="text"
-              placeholder="Enter your contribution here" 
-            />
-            <ContributePage.Submit href="/affirmation">
-              <RightArrow />
-            </ContributePage.Submit>
-          </ContributePage.InputContainer>
-          <ContributePage.LineNumberDetail>
-            You are contributing line {lineNumber} of the poem.
-          </ContributePage.LineNumberDetail>
-        </ContributePage.Form>
-      </ContributePage.Content>
+      {
+        step === STEPS.newEntry && (
+          <NewEntry 
+            onCompleteStep={onGoToDetailsStep}
+          />
+        )
+      }
     </Layout>
   );
 };
