@@ -15,16 +15,13 @@ const STEPS = {
 
 const ContributePage = () => {
   const [step, setStep] = useState(STEPS.newEntry);
-  const [contribution, setContribution] = useState('');
-  const lineNumber = 3;
 
   const onGoToDetailsStep = (contribution) => {
-    setContribution(contribution);
-    onSubmitForm();
+    onSubmitForm(contribution);
     setStep(STEPS.details);
   }
 
-  const onSubmitForm = async () => {
+  const onSubmitForm = async (contribution) => {
     axios.post('/.netlify/functions/contribute', {
       contribution,
     }).then(response => console.log(response.data));

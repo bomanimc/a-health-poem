@@ -1,47 +1,36 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from 'styled-components';
 import RightArrow from "../assets/right-arrow.svg";
 
-const NewEntry = ({ onCompleteStep }) => {
-  const [text, setText] = useState('');
+const Details = () => {
   const lineNumber = 3;
 
-  const onUpdateText = (e) => {
-    setText(e.target.value);
-  };
-
-  const onSubmit = () => {
-    onCompleteStep(text);
-  };
-
   return (
-    <NewEntry.Content>
-      <NewEntry.Instruction>Describe health in your own words.</NewEntry.Instruction>
-      <NewEntry.LineText>
+    <Details.Content>
+      <Details.Instruction>Associate some additional details with your submission to the poem.</Details.Instruction>
+      {/* <Details.LineText>
         Health is...
-      </NewEntry.LineText>
-      <NewEntry.Divider />
-      <NewEntry.Form>
-        <NewEntry.InputContainer>
-          <NewEntry.Input
-            type="text"
-            placeholder="Enter your contribution here"
-            value={text}
-            onChange={onUpdateText}
+      </Details.LineText> */}
+      {/* <Details.Divider /> */}
+      <Details.Form>
+        <Details.InputContainer>
+          <Details.Input
+            input type="text"
+            placeholder="Enter your contribution here" 
           />
-          <NewEntry.Submit onClick={onSubmit}>
+          <Details.Submit href="/affirmation">
             <RightArrow />
-          </NewEntry.Submit>
-        </NewEntry.InputContainer>
-        <NewEntry.LineNumberDetail>
+          </Details.Submit>
+        </Details.InputContainer>
+        <Details.LineNumberDetail>
           You are contributing line {lineNumber} of the poem.
-        </NewEntry.LineNumberDetail>
-      </NewEntry.Form>
-    </NewEntry.Content>
+        </Details.LineNumberDetail>
+      </Details.Form>
+    </Details.Content>
   );
 };
 
-NewEntry.Content = styled.div`
+Details.Content = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -52,40 +41,40 @@ NewEntry.Content = styled.div`
   padding: 0 2rem;
 `;
 
-NewEntry.LineNumberDetail = styled.p`
+Details.LineNumberDetail = styled.p`
   font-size: 1.5rem;
   margin-top: 1rem;
   margin-left: 0.5rem;
 `;
 
-NewEntry.LineText = styled.p`
+Details.LineText = styled.p`
   font-style: italic;
   font-size: 3rem;
   text-align: center;
   font-weight: 600;
 `;
 
-NewEntry.Divider = styled.hr`
+Details.Divider = styled.hr`
   width: 15rem;
   margin: 4rem 0;
   border: 0.5px solid #444444;
   opacity: 0.5;
 `;
 
-NewEntry.Form = styled.div`
+Details.Form = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
 `;
 
-NewEntry.InputContainer = styled.div`
+Details.InputContainer = styled.div`
   flex: 1;
   position: relative;
   border-bottom: 1px solid rgba(68, 68, 68, 0.5);
   padding-right: 4rem;
 `;
 
-NewEntry.Input = styled.input`
+Details.Input = styled.input`
   width: 100%;
   font-size: 2.25rem;
   color: #444444;
@@ -95,7 +84,7 @@ NewEntry.Input = styled.input`
   border: 0;
 `;
 
-NewEntry.Submit = styled.button`
+Details.Submit = styled.a`
   position: absolute;
   top: 50%;
   right: 0;
@@ -110,11 +99,11 @@ NewEntry.Submit = styled.button`
   }
 `;
 
-NewEntry.Instruction = styled.p`
+Details.Instruction = styled.p`
   font-size: 2rem;
   font-style: italic;
   font-weight: 300;
   margin-bottom: 1rem;
 `;
 
-export default NewEntry;
+export default Details;
