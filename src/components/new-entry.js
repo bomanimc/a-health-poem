@@ -34,11 +34,13 @@ const NewEntry = ({ contribution, onCompleteStep }) => {
             onChange={onUpdateText}
           />
         </NewEntry.InputContainer>
-        <NewEntry.SubmitContainer>
-          <Submit onClick={onSubmit}>
-            <RightArrow />
-          </Submit>
-        </NewEntry.SubmitContainer>
+        {text.length !== 0 && (
+          <NewEntry.SubmitContainer>
+            <Submit onClick={onSubmit}>
+              <RightArrow />
+            </Submit>
+          </NewEntry.SubmitContainer>
+        )}
       </NewEntry.Form>
     </NewEntry.Content>
   );
