@@ -34,13 +34,11 @@ const NewEntry = ({ contribution, onCompleteStep }) => {
             onChange={onUpdateText}
           />
         </NewEntry.InputContainer>
-        {text.length !== 0 && (
-          <NewEntry.SubmitContainer>
-            <Submit onClick={onSubmit}>
-              <RightArrow />
-            </Submit>
-          </NewEntry.SubmitContainer>
-        )}
+        <NewEntry.SubmitContainer isVisible={text.length !== 0}>
+          <Submit onClick={onSubmit}>
+            <RightArrow />
+          </Submit>
+        </NewEntry.SubmitContainer>
       </NewEntry.Form>
     </NewEntry.Content>
   );
@@ -112,6 +110,7 @@ NewEntry.SubmitContainer = styled.div`
   flex-direction: column;
   align-items: end;
   justify-content: end;
+  visibility: ${p => p.isVisible ? 'visible' : 'hidden'};
 
   @media (max-width: 896px) {
     align-items: stretch;
