@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from 'styled-components';
 import axios from 'axios';
 import { navigate } from 'gatsby';
@@ -19,6 +19,13 @@ const ContributePage = () => {
   const [step, setStep] = useState(STEPS.newEntry);
   const [contribution, setContribution] = useState('');
   const [details, setDetails] = useState({});
+  const [lineNumber, setLineNumber] = useState(null);
+
+  useEffect(() => {
+    axios.get('/.netlify/functions/countContributions')
+      .then(response => setLineNumber(response.data.count));
+  }, []);
+
 
   const onGoToDetailsStep = (contributionEntry) => {
     setContribution(contributionEntry);
@@ -53,6 +60,7 @@ const ContributePage = () => {
         step === STEPS.newEntry && (
           <NewEntry 
             contribution={contribution}
+            lineNumber={lineNumber}
             onCompleteStep={onGoToDetailsStep}
           />
         )
@@ -71,6 +79,7 @@ const ContributePage = () => {
           <ReviewEntry
             contribution={contribution}
             details={details}
+            lineNumber={lineNumber}
             onCompleteStep={onSubmitForm}
             onBack={onGoToNewEntryStep}
           />

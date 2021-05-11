@@ -4,9 +4,8 @@ import Input from "./input";
 import Submit from "./submit";
 import RightArrow from "../assets/right-arrow.svg";
 
-const NewEntry = ({ contribution, onCompleteStep }) => {
+const NewEntry = ({ contribution, lineNumber, onCompleteStep }) => {
   const [text, setText] = useState(contribution);
-  const lineNumber = 3;
 
   const onUpdateText = (e) => {
     setText(e.target.value);
@@ -15,6 +14,8 @@ const NewEntry = ({ contribution, onCompleteStep }) => {
   const onSubmit = () => {
     onCompleteStep(text);
   };
+
+  const detail = `You are contributing line ${lineNumber || '~'} of the poem.`;
 
   return (
     <NewEntry.Content>
@@ -28,7 +29,7 @@ const NewEntry = ({ contribution, onCompleteStep }) => {
           <Input
             id="name" 
             placeholder="Name" 
-            detail={`You are contributing line ${lineNumber} of the poem.`}
+            detail={detail}
             placeholder="Enter your contribution here"
             value={text}
             onChange={onUpdateText}
