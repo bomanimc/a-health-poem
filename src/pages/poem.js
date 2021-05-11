@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import styled from 'styled-components';
 import axios from 'axios';
 
@@ -6,9 +6,11 @@ import Layout from "../components/layout";
 import SEO from "../components/seo";
 
 const AffirmationPage = () => {
+  const [contributions, setContributions] = useState([]);
+
   useEffect(() => {
     axios.get('/.netlify/functions/contributions')
-      .then(response => console.log(response.data));
+      .then(response => setContributions(response.data.contributions));
   }, []);
 
   return (
@@ -18,11 +20,7 @@ const AffirmationPage = () => {
         <AffirmationPage.Title>Poem 1</AffirmationPage.Title>
         <AffirmationPage.Divider />
         <AffirmationPage.Lines>
-          <AffirmationPage.Line>Repetition changes meaning</AffirmationPage.Line>
-          <AffirmationPage.Line>The expression of an idea can be enriched by it’s repetition–allowing the listener to interpret it in a new way each time.</AffirmationPage.Line>
-          <AffirmationPage.Line>Ideas recur, although the ideas may be the same, we see them in different relationships</AffirmationPage.Line>
-          <AffirmationPage.Line>When repeated, the meaning of the statement can change</AffirmationPage.Line>
-          <AffirmationPage.Line isOwnedContribution>Repetition changes meaning</AffirmationPage.Line>
+          {contributions.map(contribution => <AffirmationPage.Line>{contribution.contribution}</AffirmationPage.Line>)}
         </AffirmationPage.Lines>
         <AffirmationPage.MetaDetail>
           A collective poem by 4 people. Inspired by the work of Gertrude Stein. 
