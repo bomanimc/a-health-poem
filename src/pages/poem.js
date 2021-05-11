@@ -17,14 +17,11 @@ const AffirmationPage = () => {
     <Layout>
       <SEO title="Home" />
       <AffirmationPage.Content>
-        <AffirmationPage.Title>Poem 1</AffirmationPage.Title>
+        <AffirmationPage.Title>A Health Poem</AffirmationPage.Title>
         <AffirmationPage.Divider />
         <AffirmationPage.Lines>
-          {contributions.map(contribution => <AffirmationPage.Line>{contribution.contribution}</AffirmationPage.Line>)}
+          {contributions.map(contribution => <AffirmationPage.Line key={contribution.contribution}>{contribution.contribution}</AffirmationPage.Line>)}
         </AffirmationPage.Lines>
-        <AffirmationPage.MetaDetail>
-          A collective poem by 4 people. Inspired by the work of Gertrude Stein. 
-        </AffirmationPage.MetaDetail>
       </AffirmationPage.Content>
     </Layout>
   );

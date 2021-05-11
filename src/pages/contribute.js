@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled from 'styled-components';
 import axios from 'axios';
-import { navigate } from 'gatsby'; //import navigate from gatsby
+import { navigate } from 'gatsby';
 
 import Layout from "../components/layout";
 import SEO from "../components/seo";
