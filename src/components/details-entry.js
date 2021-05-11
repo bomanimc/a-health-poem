@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { useFormik } from 'formik';
 import Input from "./input";
 import Back from "./back";
+import Submit from "./submit";
 import RightArrow from "../assets/right-arrow.svg";
 
 const Details = ({ details, onCompleteStep, onBack }) => {
@@ -39,9 +40,11 @@ const Details = ({ details, onCompleteStep, onBack }) => {
           detail="Enter your general location (i.e. city, state, country)"
           {...getFieldProps("location")}
         />
-        <Details.Submit type="submit">
-          <RightArrow />
-        </Details.Submit>
+        <Details.SubmitContainer>
+          <Submit type="submit">
+            <RightArrow />
+          </Submit>
+        </Details.SubmitContainer>
       </Details.Form>
     </Details.Content>
   );
@@ -105,37 +108,23 @@ Details.Instruction = styled.p`
   margin-bottom: 1rem;
 `;
 
-Details.Submit = styled.button`
-  border: 1px solid #444444;
-  border-radius: 0.5rem;
-  padding: 0 5rem;
-  height: 3rem;
-  font-size: 1.5rem;
-  color: #444444;
-  font-family: 'Cormorant Garamond';
-  display: flex;
-  align-items: center;
-  text-decoration: none;
-  justify-self: end;
-  margin-top: 1rem;
-  background: none;
-  transition: background 0.5s;
-
-  &:hover {
-    background: #A0A0A0;
-  }
-
-  svg {
-    width: 2rem;
-    fill: #444444;
-  }
-`;
-
 Details.Back = styled.a`
   color: #444444;
   text-decoration: none;
   align-self: start;
   margin: 2rem 0;
+`;
+
+Details.SubmitContainer = styled.div`
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: end;
+  justify-content: end;
+
+  @media (max-width: 896px) {
+    align-items: stretch;
+  }
 `;
 
 export default Details;

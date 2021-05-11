@@ -1,5 +1,6 @@
 import React from "react";
 import styled from 'styled-components';
+import Submit from "./submit";
 
 const ReviewEntry = ({ contribution, details, onBack, onCompleteStep }) => {
   const casedContribution = contribution[0].toLowerCase() + contribution.substring(1);
@@ -23,7 +24,9 @@ const ReviewEntry = ({ contribution, details, onBack, onCompleteStep }) => {
           {credit ? <span>{` by ${credit}.`}</span> : '.'}
         </ReviewEntry.Detail>
       </ReviewEntry.Contribution>
-      <ReviewEntry.Submit onClick={onCompleteStep}>Submit</ReviewEntry.Submit>
+      <ReviewEntry.SubmitContainer>
+        <Submit onClick={onCompleteStep}>Submit</Submit>
+      </ReviewEntry.SubmitContainer>
     </ReviewEntry.Content>
   );
 };  
@@ -77,34 +80,19 @@ ReviewEntry.Instruction = styled.p`
   margin-bottom: 1rem;
 `;
 
-ReviewEntry.Submit = styled.button`
-  border: 1px solid #444444;
-  border-radius: 0.5rem;
-  padding: 0 5rem;
-  height: 3rem;
-  font-size: 1.5rem;
-  color: #444444;
-  font-family: 'Cormorant Garamond';
-  display: flex;
-  align-items: center;
-  text-decoration: none;
-  align-self: center;
-  margin-top: 3rem;
-  background: none;
-  transition: background 0.5s;
-
-  &:hover {
-    background: #A0A0A0;
-  }
-
-  svg {
-    width: 2rem;
-    fill: #444444;
-  }
-`;
-
 ReviewEntry.SubmissionWarning = styled.p`
   font-size: 1rem;
+  text-align: center;
+`;
+
+ReviewEntry.SubmitContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  @media (max-width: 896px) {
+    align-items: stretch;
+  }
 `;
 
 export default ReviewEntry;

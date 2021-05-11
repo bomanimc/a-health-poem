@@ -132,21 +132,6 @@ ContributePage.Input = styled.input`
   border: 0;
 `;
 
-ContributePage.Submit = styled.a`
-  position: absolute;
-  top: 50%;
-  right: 0;
-  transform: translateY(-50%);
-  background: 0;
-  border: none;
-  padding: 0;
-
-  svg {
-    width: 2rem;
-    fill: #444444;
-  }
-`;
-
 ContributePage.Instruction = styled.p`
   font-size: 2rem;
   font-style: italic;

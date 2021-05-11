@@ -56,7 +56,6 @@ Input.InputContainer = styled.div`
   flex: 1;
   position: relative;
   border-bottom: 1px solid rgba(68, 68, 68, 0.5);
-  padding-right: 4rem;
 `;
 
 Input.Input = styled.input`
@@ -65,23 +64,8 @@ Input.Input = styled.input`
   color: #444444;
   font-family: 'Cormorant Garamond', serif;
   font-weight: 500;
-  padding: 0.5rem 0 0.5rem 0.5rem;
+  padding: 0.5rem 0.5rem 0.5rem 0.5rem;
   border: 0;
-`;
-
-Input.Submit = styled.a`
-  position: absolute;
-  top: 50%;
-  right: 0;
-  transform: translateY(-50%);
-  background: 0;
-  border: none;
-  padding: 0;
-
-  svg {
-    width: 2rem;
-    fill: #444444;
-  }
 `;
 
 Input.Instruction = styled.p`
