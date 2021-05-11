@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styled from 'styled-components';
 import axios from 'axios';
+import { navigate } from 'gatsby'; //import navigate from gatsby
 
 import Layout from "../components/layout";
 import SEO from "../components/seo";
@@ -30,18 +31,19 @@ const ContributePage = () => {
   }
 
   const onGoToReviewEntryStep = (detailsEntry = null) => {
-    console.log('Details entry', details);
     if (detailsEntry) setDetails(detailsEntry);
     setStep(STEPS.review);
   }
 
   const onSubmitForm = async (detailsEntry) => {
-    console.log('Submitting form with...', details);
-    setDetails(detailsEntry);
+    const { name, location } = detailsEntry;
+    setDetails({ name, location });
     axios.post('/.netlify/functions/contribute', {
       contribution,
-      ...detailsEntry
-    }).then(response => console.log(response.data));
+      name,
+      location,
+    });
+    navigate('/poem');
   }
 
   return (
