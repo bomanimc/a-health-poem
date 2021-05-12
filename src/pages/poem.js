@@ -25,7 +25,7 @@ const Poem = () => {
 
               {contributions.map(contribution =>
                 <Poem.Line key={contribution.contribution}>
-                  {contribution.contribution}
+                  {`Health is ${contribution.contribution[0].toLowerCase() + contribution.contribution.substring(1)}`}
                 </Poem.Line>
               )}
             </Poem.Lines>

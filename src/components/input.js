@@ -7,7 +7,7 @@ const Input = (props) => {
   return (
     <Input.Container>
       <Input.InputContainer>
-        <Input.Input {...otherProps}  autoComplete="off" />
+        <Input.Input {...otherProps} autoComplete="off" />
       </Input.InputContainer>
       <Input.LineNumberDetail>{detail}</Input.LineNumberDetail>
     </Input.Container>
