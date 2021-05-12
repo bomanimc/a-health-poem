@@ -20,7 +20,7 @@ const ReviewEntry = ({ contribution, details, lineNumber, onBack, onCompleteStep
           <ReviewEntry.ContributedLineText onClick={onBack}>{casedContribution}</ReviewEntry.ContributedLineText>
         </ReviewEntry.LineText>
         <ReviewEntry.Detail>
-          {`Line ${lineNumber || '~'}`} of a <i>A Health Poem</i>
+          {`Line ${lineNumber || '~'}`} of a <ReviewEntry.Italics>A Health Poem</ReviewEntry.Italics>
           {credit ? <span>{` by ${credit}.`}</span> : '.'}
         </ReviewEntry.Detail>
       </ReviewEntry.Contribution>
@@ -93,6 +93,10 @@ ReviewEntry.SubmitContainer = styled.div`
   @media (max-width: 896px) {
     align-items: stretch;
   }
+`;
+
+ReviewEntry.Italics = styled.span`
+  font-style: italic;
 `;
 
 export default ReviewEntry;

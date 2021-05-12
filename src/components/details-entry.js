@@ -27,7 +27,7 @@ const Details = ({ details, onCompleteStep, onBack }) => {
         Optionally, add some additional information that will
         allow your specific contribution to be credited.
       </Details.Instruction>
-      <Details.Form onSubmit={handleSubmit}>
+      <Details.Form onSubmit={handleSubmit} autocomplete="off">
         <Input 
           id="name" 
           placeholder="Name" 

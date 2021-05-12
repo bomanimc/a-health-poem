@@ -1,6 +1,5 @@
 import React from "react";
 import styled from 'styled-components';
-// import RightArrow from "../assets/right-arrow.svg";
 
 const Input = (props) => {
   const {detail, ...otherProps} = props;
@@ -8,7 +7,7 @@ const Input = (props) => {
   return (
     <Input.Container>
       <Input.InputContainer>
-        <Input.Input {...otherProps} />
+        <Input.Input {...otherProps}  autoComplete="off" />
       </Input.InputContainer>
       <Input.LineNumberDetail>{detail}</Input.LineNumberDetail>
     </Input.Container>
