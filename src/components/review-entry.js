@@ -1,6 +1,6 @@
 import React from "react";
 import styled from 'styled-components';
-import Submit from "./submit";
+import Button from "./button";
 
 const ReviewEntry = ({ contribution, details, lineNumber, onBack, onCompleteStep }) => {
   const casedContribution = contribution[0].toLowerCase() + contribution.substring(1);
@@ -25,7 +25,7 @@ const ReviewEntry = ({ contribution, details, lineNumber, onBack, onCompleteStep
         </ReviewEntry.Detail>
       </ReviewEntry.Contribution>
       <ReviewEntry.SubmitContainer>
-        <Submit onClick={onCompleteStep}>Submit</Submit>
+        <Button onClick={onCompleteStep}>Submit</Button>
       </ReviewEntry.SubmitContainer>
     </ReviewEntry.Content>
   );

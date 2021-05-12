@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled from 'styled-components';
 import Input from "./input";
-import Submit from "./submit";
+import Button from "./button";
 import RightArrow from "../assets/right-arrow.svg";
 
 const NewEntry = ({ contribution, lineNumber, onCompleteStep }) => {
@@ -36,9 +36,9 @@ const NewEntry = ({ contribution, lineNumber, onCompleteStep }) => {
           />
         </NewEntry.InputContainer>
         <NewEntry.SubmitContainer isVisible={text.length !== 0}>
-          <Submit onClick={onSubmit}>
+          <Button onClick={onSubmit}>
             <RightArrow />
-          </Submit>
+          </Button>
         </NewEntry.SubmitContainer>
       </NewEntry.Form>
     </NewEntry.Content>

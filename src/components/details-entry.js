@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { useFormik } from 'formik';
 import Input from "./input";
 import Back from "./back";
-import Submit from "./submit";
+import Button from "./button";
 import RightArrow from "../assets/right-arrow.svg";
 
 const Details = ({ details, onCompleteStep, onBack }) => {
@@ -41,9 +41,9 @@ const Details = ({ details, onCompleteStep, onBack }) => {
           {...getFieldProps("location")}
         />
         <Details.SubmitContainer>
-          <Submit type="submit">
+          <Button type="submit">
             <RightArrow />
-          </Submit>
+          </Button>
         </Details.SubmitContainer>
       </Details.Form>
     </Details.Content>

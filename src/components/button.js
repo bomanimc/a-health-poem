@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const Submit = styled.button`
+const Button = styled.button`
   border: 1px solid #444444;
   border-radius: 0.5rem;
   padding: 0 5rem;
@@ -17,7 +17,7 @@ const Submit = styled.button`
   justify-content: center;
 
   &:hover {
-    background: #A0A0A0;
+    background: #E0E0E0;
   }
 
   svg {
@@ -30,4 +30,4 @@ const Submit = styled.button`
   }
 `;
 
-export default Submit;
+export default Button;
