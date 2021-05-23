@@ -27,15 +27,12 @@ const Poem = () => {
                 const {contribution: contributionText, name, location } = contribution;
 
                 return (
-                  <>
-                  {name || location && <Credit name={name} location={location} lineNumber={index + 1} />}
                   <Poem.Line key={contribution.contribution}>
                     <p>{`Health is ${contributionText[0].toLowerCase() + contributionText.substring(1)}`}</p>
                     <Poem.CreditsContainter>
-                      {name || location && <Credit name={name} location={location} lineNumber={index + 1} />}
+                      <Credit name={name} location={location} lineNumber={index + 1} />
                     </Poem.CreditsContainter>
                   </Poem.Line>
-                  </>
                 );
               })}
             </Poem.Lines>
@@ -65,11 +62,11 @@ Poem.ContentContainer = styled.div`
 
 Poem.CreditsContainter = styled.div`
   display: none;
-  /* width: 10rem; */
+  width: 15rem;
   position: absolute;
   right: -2rem;
   transform: translateX(100%);
-  background: yellow;
+  font-size: 1rem;
 `;
 
 Poem.PoemContainer = styled.div`
