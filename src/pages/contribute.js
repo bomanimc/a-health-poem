@@ -19,11 +19,11 @@ const ContributePage = () => {
   const [step, setStep] = useState(STEPS.newEntry);
   const [contribution, setContribution] = useState('');
   const [details, setDetails] = useState({});
-  const [lineNumber, setLineNumber] = useState(null);
+  const [nextLineNumber, setNextLineNumber] = useState(null);
 
   useEffect(() => {
     axios.get('/.netlify/functions/countContributions')
-      .then(response => setLineNumber(response.data.count));
+      .then(response => setNextLineNumber(response.data.count + 1));
   }, []);
 
 
@@ -60,7 +60,7 @@ const ContributePage = () => {
         step === STEPS.newEntry && (
           <NewEntry 
             contribution={contribution}
-            lineNumber={lineNumber}
+            lineNumber={nextLineNumber}
             onCompleteStep={onGoToDetailsStep}
           />
         )
@@ -79,7 +79,7 @@ const ContributePage = () => {
           <ReviewEntry
             contribution={contribution}
             details={details}
-            lineNumber={lineNumber}
+            lineNumber={nextLineNumber}
             onCompleteStep={onSubmitForm}
             onBack={onGoToNewEntryStep}
           />
