@@ -1,12 +1,11 @@
 import React from "react";
 import styled from 'styled-components';
 import Button from "./button";
+import Credit from "./credit";
 
 const ReviewEntry = ({ contribution, details, lineNumber, onBack, onCompleteStep }) => {
   const casedContribution = contribution[0].toLowerCase() + contribution.substring(1);
   const {name, location } = details;
-  let credit = name ? name : null;
-  if (location && credit) credit += ` from ${location}`;
 
   return (
     <ReviewEntry.Content>
@@ -20,8 +19,7 @@ const ReviewEntry = ({ contribution, details, lineNumber, onBack, onCompleteStep
           <ReviewEntry.ContributedLineText onClick={onBack}>{casedContribution}</ReviewEntry.ContributedLineText>
         </ReviewEntry.LineText>
         <ReviewEntry.Detail>
-          {`Line ${lineNumber || '~'}`} of a <ReviewEntry.Italics>A Health Poem</ReviewEntry.Italics>
-          {credit ? <span>{` by ${credit}.`}</span> : '.'}
+          <Credit name={name} location={location} lineNumber={lineNumber} />
         </ReviewEntry.Detail>
       </ReviewEntry.Contribution>
       <ReviewEntry.SubmitContainer>
