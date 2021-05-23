@@ -4,6 +4,7 @@ import axios from 'axios';
 
 import Layout from "../components/layout";
 import SEO from "../components/seo";
+import Credit from "../components/credit";
 
 const Poem = () => {
   const [contributions, setContributions] = useState([]);
@@ -22,12 +23,21 @@ const Poem = () => {
             <Poem.Title>A Health Poem</Poem.Title>
             <Poem.Subtitle>A collaborative poem exploring the meaning of health.</Poem.Subtitle>
             <Poem.Lines>
+              {contributions.map((contribution, index) => {
+                const {contribution: contributionText, name, location } = contribution;
 
-              {contributions.map(contribution =>
-                <Poem.Line key={contribution.contribution}>
-                  {`Health is ${contribution.contribution[0].toLowerCase() + contribution.contribution.substring(1)}`}
-                </Poem.Line>
-              )}
+                return (
+                  <>
+                  {name || location && <Credit name={name} location={location} lineNumber={index + 1} />}
+                  <Poem.Line key={contribution.contribution}>
+                    <p>{`Health is ${contributionText[0].toLowerCase() + contributionText.substring(1)}`}</p>
+                    <Poem.CreditsContainter>
+                      {name || location && <Credit name={name} location={location} lineNumber={index + 1} />}
+                    </Poem.CreditsContainter>
+                  </Poem.Line>
+                  </>
+                );
+              })}
             </Poem.Lines>
           </Poem.PoemContainer>
         </Poem.ContentContainer>
@@ -50,6 +60,16 @@ Poem.ContentContainer = styled.div`
   margin: 2rem auto;
   height: 100%;
   width: 100%;
+  position: relative;
+`;
+
+Poem.CreditsContainter = styled.div`
+  display: none;
+  /* width: 10rem; */
+  position: absolute;
+  right: -2rem;
+  transform: translateX(100%);
+  background: yellow;
 `;
 
 Poem.PoemContainer = styled.div`
@@ -58,7 +78,6 @@ Poem.PoemContainer = styled.div`
   overflow-y: scroll;
   box-shadow: 10px 5px 5px #E0E0E0;
   height: 100%;
-  font-style: italic;
 `;
 
 Poem.Title = styled.h3`
@@ -82,9 +101,22 @@ Poem.Lines = styled.div`
   font-size: 1.5rem;
 `;
 
-Poem.Line = styled.p`
-  margin-bottom: 1rem;
-  font-weight: ${p => p.isOwnedContribution ? 'bold' : 'normal'};
+Poem.Line = styled.div`
+  display: flex;
+
+  p {
+    margin-bottom: 1rem;
+    font-weight: ${p => p.isOwnedContribution ? 'bold' : 'normal'};
+  }
+
+  &:hover {
+    text-decoration: underline;
+    text-decoration-style: dotted;
+  }
+
+  &:hover ${Poem.CreditsContainter} {
+    display: block;
+  }
 `;
 
 Poem.MetaDetail = styled.p`
