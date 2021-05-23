@@ -67,6 +67,7 @@ Poem.CreditsContainter = styled.div`
   right: -2rem;
   transform: translateX(100%);
   font-size: 1rem;
+  font-style: italic;
 `;
 
 Poem.PoemContainer = styled.div`
@@ -84,6 +85,7 @@ Poem.Title = styled.h3`
 Poem.Subtitle = styled.p`
   font-size: 1rem;
   margin-bottom: 2rem; 
+  font-style: italic;
 `;
 
 Poem.Divider = styled.hr`
@@ -94,8 +96,8 @@ Poem.Divider = styled.hr`
 `;
 
 Poem.Lines = styled.div`
-  font-style: italic;
   font-size: 1.5rem;
+  line-height: 1.1;
 `;
 
 Poem.Line = styled.div`
