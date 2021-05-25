@@ -11,7 +11,7 @@ const Poem = () => {
 
   useEffect(() => {
     axios.get('/.netlify/functions/contributions')
-      .then(response => setContributions(response.data.contributions));
+      .then(response => setContributions(Array(300).fill(response.data.contributions[1])));
   }, []);
 
   return (
@@ -27,7 +27,7 @@ const Poem = () => {
                 const {contribution: contributionText, name, location } = contribution;
 
                 return (
-                  <Poem.Line key={contribution.contribution}>
+                  <Poem.Line key={contributionText}>
                     <p>{`Health is ${contributionText[0].toLowerCase() + contributionText.substring(1)}`}</p>
                     <Poem.CreditsContainter>
                       <Credit name={name} location={location} lineNumber={index + 1} />
