@@ -17,7 +17,7 @@ const Poem = () => {
 
   const onMouseOverLine = (e) => {
     const linePosition = e.target.getBoundingClientRect();
-    setYPos(linePosition.y);
+    setYPos(linePosition.top);
   }
 
   return (
@@ -74,7 +74,7 @@ Poem.CreditsContainter = styled.div`
   transform: translateX(100%);
   font-size: 1rem;
   font-style: italic;
-  top: ${p => p.yPos}px;
+  top: calc(${p => p.yPos}px - 2rem);
 `;
 
 Poem.PoemContainer = styled.div`
