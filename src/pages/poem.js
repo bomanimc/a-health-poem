@@ -12,7 +12,7 @@ const Poem = () => {
 
   useEffect(() => {
     axios.get('/.netlify/functions/contributions')
-    .then(response => setContributions(Array(300).fill(response.data.contributions[1])));
+    .then(response => setContributions(response.data.contributions));
   }, []);
 
   const onMouseOverLine = (e) => {
