@@ -8,11 +8,17 @@ import Credit from "../components/credit";
 
 const Poem = () => {
   const [contributions, setContributions] = useState([]);
+  const [yPos, setYPos] = useState(0);
 
   useEffect(() => {
     axios.get('/.netlify/functions/contributions')
-      .then(response => setContributions(Array(300).fill(response.data.contributions[1])));
+    .then(response => setContributions(Array(300).fill(response.data.contributions[1])));
   }, []);
+
+  const onMouseOverLine = (e) => {
+    const linePosition = e.target.getBoundingClientRect();
+    setYPos(linePosition.y);
+  }
 
   return (
     <Layout>
@@ -27,9 +33,9 @@ const Poem = () => {
                 const {contribution: contributionText, name, location } = contribution;
 
                 return (
-                  <Poem.Line key={contributionText}>
+                  <Poem.Line key={contributionText} onMouseOver={onMouseOverLine}>
                     <p>{`Health is ${contributionText[0].toLowerCase() + contributionText.substring(1)}`}</p>
-                    <Poem.CreditsContainter>
+                    <Poem.CreditsContainter yPos={yPos}>
                       <Credit name={name} location={location} lineNumber={index + 1} />
                     </Poem.CreditsContainter>
                   </Poem.Line>
@@ -68,6 +74,7 @@ Poem.CreditsContainter = styled.div`
   transform: translateX(100%);
   font-size: 1rem;
   font-style: italic;
+  top: ${p => p.yPos}px;
 `;
 
 Poem.PoemContainer = styled.div`
